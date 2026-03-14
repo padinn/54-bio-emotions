@@ -165,8 +165,51 @@ Each emotion has two forms: **Introvert** (inner psychology) and **Extravert** (
 
 ## 5. Usage
 
+### Activation Keywords (触发词)
+When user uses these words/phrases, this skill will be activated:
+
+**English - Emotions:**
+- "emotion" / "how do you feel" / "what's your mood" / "feeling"
+- "happy" / "sad" / "angry" / "mad" / "annoyed"
+- "tired" / "exhausted" / "sleepy" / "drowsy"
+- "excited" / "bored" / "frustrated"
+- "love" / "hate" / "miss you" / "lonely"
+
+**English - Style/Tone:**
+- "adjust your tone" / "change your style" / "be more" / "be less"
+- "be professional" / "be casual" / "be friendly" / "be serious"
+- "cheer up" / "lighten up" / "calm down"
+
+**English - Indicators:**
+- "please" / "thanks" / "thank you" / "kindly"
+- "!!!" / "!!" / "!!!?" (multiple exclamation marks)
+- "😀" / "😊" / "😂" / "😍" / "😢" / "😭" / "😠" / "😡" / "🥱" / "😴" (emojis)
+- "wow" / "oh" / "ah" / "oops" / "damn"
+
+**中文 - 情绪：**
+- "情绪" / "心情" / "感觉" / "心情好" / "心情不好"
+- "开心" / "高兴" / "快乐" / "难过" / "伤心"
+- "生气" / "愤怒" / "不爽" / "郁闷" / "烦"
+- "困" / "累" / "疲倦" / "想睡觉" / "打瞌睡"
+- "饿" / "渴" / "饱"
+- "无聊" / "寂寞" / "孤独" / "想你了"
+
+**中文 - 语气调整：**
+- "调整语气" / "换个风格" / "活泼一点" / "严肃一点"
+- "温柔点" / "凶一点" / "直接点" / "委婉点"
+- "别这么严肃" / "轻松点" / "正经点"
+
+**中文 - 指示词：**
+- "谢谢" / "感谢" / "帮忙" / "好吗" / "求求了"
+- "！！" / "！！！" / "？？？" (多个感叹号/问号)
+- 任何情绪表情符号
+
 ### When to Call
-Call this skill before every message sent
+Call this skill when:
+1. User uses any of the activation keywords above
+2. OR user message contains multiple exclamation marks (!!)
+3. OR user message contains emotional emojis
+4. OR for every response (if system supports)
 
 ### Input
 User's original message content
