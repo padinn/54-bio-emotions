@@ -1,5 +1,9 @@
 # 54 Bio-Emotions Skill
 
+[English](README.md) | [中文](README-ZH.md)
+
+---
+
 An OpenClaw agent skill that dynamically adjusts response style based on three emotional parameters. Calculates 54 distinct emotional states based on **3 hormones × 3 levels × 2 directions**.
 
 ## Overview
