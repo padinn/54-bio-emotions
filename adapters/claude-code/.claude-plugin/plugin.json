@@ -1,0 +1,8 @@
+{
+  "name": "intrinsic-affect-ai",
+  "version": "4.4.0",
+  "description": "Claude Code adapter for Intrinsic Affect for AI, a foundational affective architecture based on the 54 Bio-Emotions Framework.",
+  "author": {
+    "name": "Guo Zhuoqiang"
+  }
+}

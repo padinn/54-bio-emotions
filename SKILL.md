@@ -472,6 +472,8 @@ Recommended adapter surfaces:
 
 The canonical logic should stay in this repository, while platform adapters remain thin and platform-specific.
 
+An initial Claude Code adapter pack now lives in `adapters/claude-code/`.
+
 ---
 
 ## Changelog
@@ -486,3 +488,4 @@ The canonical logic should stay in this repository, while platform adapters rema
 | v4.1 | 2026-04-08 | Added a fuller intrinsic-state mechanism: state sources, persistence, coupling, update loop, and policy effects |
 | v4.2 | 2026-04-08 | Added a minimal state schema, reference update model, pseudocode, and multi-turn dialogue trajectories |
 | v4.3 | 2026-04-08 | Added cross-platform portability guidance for OpenCode, Claude Code, Cursor, Windsurf, and Antigravity |
+| v4.4 | 2026-04-08 | Added an initial Claude Code adapter pack with `CLAUDE.md`, plugin metadata, a Claude-native skill, and a policy subagent |

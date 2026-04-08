@@ -249,6 +249,8 @@ Each target platform should get its own thin adapter:
 - **Windsurf**: native `Skills`, plus `.windsurf/rules/*.md`, `AGENTS.md`, and optional memories/workflows
 - **Antigravity**: experimental prompt/rule pack until official extension points are clearer
 
+The repository now includes an initial Claude Code adapter pack in [adapters/claude-code](adapters/claude-code/README.md).
+
 ### 3. Universal Delivery Layer
 
 To go beyond editor-specific ecosystems, Intrinsic Affect should also ship as:
@@ -348,6 +350,7 @@ clawhub install intrinsic-affect-ai
 | v4.1 | 2026-04-08 | Added a fuller intrinsic-state mechanism covering sources, persistence, coupling, and policy impact |
 | v4.2 | 2026-04-08 | Added a minimal state schema, reference update formula, and multi-turn trajectory framing |
 | v4.3 | 2026-04-08 | Added a cross-platform compatibility roadmap covering OpenCode, Claude Code, Cursor, Windsurf, and Antigravity |
+| v4.4 | 2026-04-08 | Added an initial Claude Code adapter pack with `CLAUDE.md`, plugin metadata, a Claude-native skill, and a policy subagent |
 
 ## License
 
