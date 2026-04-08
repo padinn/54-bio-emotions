@@ -11,6 +11,10 @@
 
 It is designed to give AI an **intrinsic emotional state model** rather than a simple emotion-detection layer, tone changer, or rule-based reaction system.
 
+## Search Terms
+
+Intrinsic emotional state, affective architecture, 54 Bio-Emotions Framework, reference spec, runtime, conformance vectors, AI emotions, OpenClaw skill.
+
 This repository currently contains the OpenClaw skill implementation, but the project itself is intended for the broader AI industry.
 
 ## What It Is

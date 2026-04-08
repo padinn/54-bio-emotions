@@ -11,6 +11,10 @@
 
 これは単純な感情検出層、トーン変更器、あるいはルールベースの反応システムではなく、AI に**内在的な情動状態モデル**を与えることを目的としています。
 
+## 検索キーワード
+
+内在的な情動状態、情動アーキテクチャ、54 Bio-Emotions Framework、reference spec、runtime、conformance vectors、AI emotions、OpenClaw skill。
+
 このリポジトリには現在 OpenClaw の skill 実装が含まれていますが、プロジェクト自体は OpenClaw に限定されず、より広い AI 業界を対象としています。
 
 ## それは何か

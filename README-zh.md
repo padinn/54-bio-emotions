@@ -11,6 +11,10 @@
 
 它的目标不是做一个简单的情绪识别层、语气调节器或条件反射式规则系统，而是为 AI 提供一个**内在情绪状态模型**。
 
+## 搜索关键词
+
+内在情绪状态、情感架构、54 种生物情绪框架、reference spec、runtime、conformance vectors、AI 情绪、OpenClaw skill。
+
 这个仓库目前承载的是 OpenClaw skill 实现，但项目本身面向的不只是 OpenClaw，而是整个 AI 行业。
 
 ## 它是什么
