@@ -109,6 +109,29 @@ Intrinsic affect should evolve by rules like these:
 
 This is what makes the system feel intrinsic rather than cosmetic.
 
+## Minimal State Schema
+
+One useful implementation split is:
+
+- `user_state = { safety, urgency, need, direction }`
+- `assistant_state = { safety, urgency, need, direction, confidence, friction }`
+- `policy_state = { directness, structure, reassurance, caution, initiative }`
+
+This separation matters. `user_state` is an estimate. `assistant_state` is the system's own carried internal state. `policy_state` is the behavioral output that determines how the AI helps.
+
+## Reference Update Model
+
+A simple implementation can treat each turn as a bounded weighted update:
+
+`assistant_state_t = clamp(decay * assistant_state_t-1 + user_weight * user_state + task_weight * task_signal + epistemic_weight * epistemic_signal + relational_weight * relational_signal)`
+
+The exact coefficients can vary. What matters is that the state:
+
+- remembers something
+- changes for reasons
+- stays bounded
+- can recover
+
 ## Coupling, Not Mirroring
 
 User emotion should influence the assistant's state, but should not fully overwrite it.
@@ -151,6 +174,14 @@ Examples:
 - **External direction** can allow more visible acknowledgement and sharper pacing shifts
 
 This is why Intrinsic Affect for AI is not just a style layer.
+
+## Reference Trajectories
+
+Three examples of the intended dynamics:
+
+- **Blocked user, quick recovery**: urgency rises early, then decays as progress returns
+- **Repeated repair loop**: safety drops, friction rises, and policy becomes more conservative
+- **Warm but overwhelmed user**: need rises, policy becomes more structured and reassuring, but expression stays restrained
 
 ## OpenClaw Implementation
 
@@ -236,6 +267,7 @@ clawhub install intrinsic-affect-ai
 | v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
 | v4.0 | 2026-04-08 | Rebranded as Intrinsic Affect for AI and repositioned as a foundational affective architecture for AI systems |
 | v4.1 | 2026-04-08 | Added a fuller intrinsic-state mechanism covering sources, persistence, coupling, and policy impact |
+| v4.2 | 2026-04-08 | Added a minimal state schema, reference update formula, and multi-turn trajectory framing |
 
 ## License
 

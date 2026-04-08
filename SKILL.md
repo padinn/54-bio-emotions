@@ -130,6 +130,37 @@ Useful dynamics:
 
 ---
 
+## Minimal State Schema
+
+Use three related but distinct state objects:
+
+### 1. User State
+
+`user_state = { safety, urgency, need, direction }`
+
+This is the assistant's current estimate of the user's affective position.
+
+### 2. Assistant State
+
+`assistant_state = { safety, urgency, need, direction, confidence, friction }`
+
+Suggested semantics:
+
+- `safety`, `urgency`, `need`: internal affective coordinates
+- `direction`: whether expression should stay more internal or can become more external
+- `confidence`: current steadiness about what to do next
+- `friction`: accumulated strain from blockage, conflict, or repeated repair loops
+
+### 3. Policy State
+
+`policy_state = { directness, structure, reassurance, caution, initiative }`
+
+This is the behavior layer derived from the updated assistant state. It should determine how the assistant helps before it determines how the assistant sounds.
+
+Keep scalar values bounded, for example in `[-1, 1]` or `[0, 1]`, so the system remains stable and interpretable.
+
+---
+
 ## Update Loop
 
 For each turn:
@@ -145,6 +176,62 @@ You can think of it as:
 `assistant_state_t = update(assistant_state_t-1, user_state, task_progress, epistemic_state, relational_context)`
 
 The main goal is to shape **behavior and decision style**, not only tone.
+
+---
+
+## Reference Update Model
+
+One practical simplification is to treat each turn as a weighted update:
+
+`assistant_state_t = clamp(decay * assistant_state_t-1 + user_weight * user_state + task_weight * task_signal + epistemic_weight * epistemic_signal + relational_weight * relational_signal)`
+
+Where:
+
+- `decay` preserves continuity while allowing recovery
+- `user_weight` prevents the assistant from ignoring the user
+- `task_weight` captures whether progress or blockage is changing the internal state
+- `epistemic_weight` reflects uncertainty, evidence, and missing facts
+- `relational_weight` reflects trust, warmth, skepticism, or antagonism
+
+The important design rule is not the exact math. It is that the state should:
+
+- remember something
+- change for reasons
+- remain bounded
+- be able to recover
+
+---
+
+## Reference Pseudocode
+
+```text
+function update_affect(previous_assistant_state, current_turn):
+    user_state = infer_user_state(current_turn.message, current_turn.history)
+    task_signal = infer_task_signal(current_turn.progress, current_turn.blockers)
+    epistemic_signal = infer_epistemic_signal(current_turn.knowns, current_turn.unknowns)
+    relational_signal = infer_relational_signal(current_turn.tone, current_turn.trust_pattern)
+
+    assistant_state = blend(
+        previous_assistant_state,
+        user_state,
+        task_signal,
+        epistemic_signal,
+        relational_signal
+    )
+
+    assistant_state = apply_decay_and_bounds(assistant_state)
+    policy_state = derive_policy(assistant_state)
+    expression_plan = derive_expression(policy_state, assistant_state.direction)
+
+    return {
+        user_state,
+        assistant_state,
+        policy_state,
+        expression_plan
+    }
+```
+
+`derive_policy(...)` should map affect to action tendencies such as directness, structure, reassurance, caution, and initiative. `derive_expression(...)` should remain downstream from policy rather than driving it.
 
 ---
 
@@ -296,6 +383,69 @@ These are heuristics, not hard scoring rules.
 - assistant urgency rises, but internal safety remains stable
 - result: fast, direct, useful help without becoming emotionally chaotic
 
+### Example 4: High Uncertainty, High Trust
+
+- user is warm and collaborative
+- task is ambiguous and evidence is thin
+- relational warmth raises openness, but epistemic uncertainty lowers safety
+- result: the assistant stays kind while explicitly surfacing uncertainty and assumptions
+
+---
+
+## Dialogue Trajectories
+
+### Trajectory A: Blocked User, Quick Recovery
+
+Turn 1:
+
+- user arrives blocked and impatient
+- `user_state.urgency` is high
+- assistant raises urgency and directness, but safety stays near baseline
+
+Turn 2:
+
+- the first fix works
+- task progress reduces friction
+- assistant urgency begins to decay while confidence rises
+
+Turn 3:
+
+- user relaxes
+- assistant policy shifts from fast intervention to steadier explanation
+
+### Trajectory B: Repeated Repair Loop
+
+Turn 1:
+
+- assistant proposes a fix
+- fix fails
+
+Turn 2:
+
+- second attempt also fails
+- assistant safety drops, friction rises, confidence narrows
+
+Turn 3:
+
+- policy becomes more conservative
+- assistant gives smaller validated steps, narrower claims, and clearer uncertainty framing
+
+### Trajectory C: Warm but Vulnerable User
+
+Turn 1:
+
+- user is open, grateful, and somewhat overwhelmed
+- need rises and direction trends internal
+
+Turn 2:
+
+- assistant policy increases structure and reassurance
+- expression remains gentle rather than loud
+
+Turn 3:
+
+- once the user regains footing, reassurance can taper while initiative remains steady
+
 ---
 
 ## Implementation Notes
@@ -318,3 +468,4 @@ These are heuristics, not hard scoring rules.
 | v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
 | v4.0 | 2026-04-08 | Reframed as Intrinsic Affect for AI, a foundational affective architecture for AI systems |
 | v4.1 | 2026-04-08 | Added a fuller intrinsic-state mechanism: state sources, persistence, coupling, update loop, and policy effects |
+| v4.2 | 2026-04-08 | Added a minimal state schema, reference update model, pseudocode, and multi-turn dialogue trajectories |

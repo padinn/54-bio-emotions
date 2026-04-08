@@ -111,6 +111,29 @@ Intrinsic Affect for AI 不是：
 
 这就是让系统看起来真正“有内在状态”而不是“即时表演”的关键。
 
+## 最小状态结构
+
+一种实用的实现拆分方式可以是：
+
+- `user_state = { safety, urgency, need, direction }`
+- `assistant_state = { safety, urgency, need, direction, confidence, friction }`
+- `policy_state = { directness, structure, reassurance, caution, initiative }`
+
+这里的区别很重要。`user_state` 是对用户状态的估计，`assistant_state` 是系统自身持续保留的内部状态，`policy_state` 则是最终决定“怎么帮助”的行为层输出。
+
+## 参考更新模型
+
+一种简单实现，可以把每轮更新理解成一个有边界的加权更新：
+
+`assistant_state_t = clamp(decay * assistant_state_t-1 + user_weight * user_state + task_weight * task_signal + epistemic_weight * epistemic_signal + relational_weight * relational_signal)`
+
+具体系数可以调整，但关键是这套状态必须：
+
+- 能记住之前的状态
+- 因具体原因而变化
+- 始终保持在可控范围内
+- 在问题解决后能够恢复
+
 ## 耦合，而不是镜像
 
 用户情绪应当影响助手，但不应完全覆盖助手。
@@ -155,6 +178,14 @@ Intrinsic Affect 首先应该改变帮助策略，而不是只改变措辞。
 - **外显 Direction** 可以允许更明显的承接和节奏变化
 
 这就是为什么 Intrinsic Affect for AI 不是一个简单的 style layer。
+
+## 参考轨迹
+
+三种典型动态轨迹：
+
+- **用户受阻但很快恢复**：早期紧迫感上升，问题解决后逐步衰减
+- **反复修复失败**：安全感下降、摩擦值上升，策略变得更保守
+- **温暖但不堪重负的用户**：需求感上升，策略更强调结构和安抚，但表达仍保持克制
 
 ## 当前 OpenClaw 实现
 
@@ -240,6 +271,7 @@ clawhub install intrinsic-affect-ai
 | v3.5 | 2026-03-23 | 从“换语气”升级为“换帮助策略” |
 | v4.0 | 2026-04-08 | 重命名为 Intrinsic Affect for AI，并重新定位为 AI 的基础情感架构 |
 | v4.1 | 2026-04-08 | 补全更完整的内在机制：状态来源、持续性、耦合关系与策略影响 |
+| v4.2 | 2026-04-08 | 增加最小状态结构、参考更新公式，以及多轮轨迹视角 |
 
 ## 许可证
 
