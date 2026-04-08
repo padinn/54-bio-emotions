@@ -251,6 +251,7 @@ Each target platform should get its own thin adapter:
 
 The repository now includes an initial Claude Code adapter pack in [adapters/claude-code](adapters/claude-code/README.md).
 It also includes an initial OpenCode adapter pack in [adapters/opencode](adapters/opencode/README.md).
+It now also includes an initial Windsurf adapter pack in [adapters/windsurf](adapters/windsurf/README.md).
 
 ### 3. Universal Delivery Layer
 
@@ -353,6 +354,7 @@ clawhub install intrinsic-affect-ai
 | v4.3 | 2026-04-08 | Added a cross-platform compatibility roadmap covering OpenCode, Claude Code, Cursor, Windsurf, and Antigravity |
 | v4.4 | 2026-04-08 | Added an initial Claude Code adapter pack with `CLAUDE.md`, plugin metadata, a Claude-native skill, and a policy subagent |
 | v4.5 | 2026-04-08 | Added an initial OpenCode adapter pack with native `.opencode` skill layout plus `.claude` and `.agents` mirrors |
+| v4.6 | 2026-04-08 | Added an initial Windsurf adapter pack with native skill, model-decision rule, and root `AGENTS.md` guidance |
 
 ## License
 

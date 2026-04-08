@@ -474,6 +474,7 @@ The canonical logic should stay in this repository, while platform adapters rema
 
 An initial Claude Code adapter pack now lives in `adapters/claude-code/`.
 An initial OpenCode adapter pack now lives in `adapters/opencode/`.
+An initial Windsurf adapter pack now lives in `adapters/windsurf/`.
 
 ---
 
@@ -491,3 +492,4 @@ An initial OpenCode adapter pack now lives in `adapters/opencode/`.
 | v4.3 | 2026-04-08 | Added cross-platform portability guidance for OpenCode, Claude Code, Cursor, Windsurf, and Antigravity |
 | v4.4 | 2026-04-08 | Added an initial Claude Code adapter pack with `CLAUDE.md`, plugin metadata, a Claude-native skill, and a policy subagent |
 | v4.5 | 2026-04-08 | Added an initial OpenCode adapter pack with native `.opencode` skill layout plus `.claude` and `.agents` mirrors |
+| v4.6 | 2026-04-08 | Added an initial Windsurf adapter pack with native skill, model-decision rule, and root `AGENTS.md` guidance |
