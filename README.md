@@ -81,6 +81,7 @@ The project now includes a formal implementation layer:
 - [references/intrinsic-affect-state.schema.json](references/intrinsic-affect-state.schema.json)
 - [references/conformance-vectors.json](references/conformance-vectors.json)
 - [runtime/ts/intrinsic-affect.ts](runtime/ts/intrinsic-affect.ts)
+- [runtime/js/validate-conformance.mjs](runtime/js/validate-conformance.mjs)
 
 These files define the current reference standard for:
 
@@ -91,6 +92,7 @@ These files define the current reference standard for:
 - minimal runtime payload shape
 - conformance test vectors
 - a working TypeScript reference implementation
+- an executable JavaScript validator for compatibility checks
 
 ## How Intrinsic State Is Formed
 
@@ -370,8 +372,8 @@ clawhub install intrinsic-affect-ai
 | v2.0 | 2026-03-15 | LLM semantic analysis, removed keywords |
 | v3.0 | 2026-03-23 | Added AI intrinsic emotion concepts |
 | v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
-| v5.0 | 2026-04-08 | Major architecture upgrade: rebranded as Intrinsic Affect for AI; expanded the intrinsic-state model; added the minimal state schema, reference update model, implementation spec, JSON schema, TypeScript reference runtime, and conformance vectors |
-| v5.1 | 2026-04-08 | Platform adapter bundle: added initial adapter packs for Claude Code, OpenCode, Windsurf, and Cursor, plus the cross-platform roadmap |
+| v4.0 | 2026-04-08 | Major architecture upgrade: rebranded as Intrinsic Affect for AI; expanded the intrinsic-state model; added the minimal state schema, reference update model, implementation spec, JSON schema, TypeScript reference runtime, conformance vectors, and an executable validator |
+| v4.1 | 2026-04-08 | Platform adapter bundle: added initial adapter packs for Claude Code, OpenCode, Windsurf, and Cursor, plus the cross-platform roadmap |
 
 ## License
 

@@ -494,5 +494,5 @@ An initial Cursor adapter pack now lives in `adapters/cursor/`.
 | v2.0 | 2026-03-15 | LLM semantic analysis, removed keywords |
 | v3.0 | 2026-03-23 | Added AI intrinsic emotion concepts |
 | v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
-| v5.0 | 2026-04-08 | Major core upgrade: rebranded as Intrinsic Affect for AI; expanded the intrinsic-state model; added the implementation spec, JSON schema, conformance vectors, and TypeScript reference runtime |
-| v5.1 | 2026-04-08 | Platform adapter bundle: added initial adapters for Claude Code, OpenCode, Windsurf, and Cursor, plus cross-platform portability guidance |
+| v4.0 | 2026-04-08 | Major core upgrade: rebranded as Intrinsic Affect for AI; expanded the intrinsic-state model; added the implementation spec, JSON schema, conformance vectors, the TypeScript reference runtime, and the executable validator |
+| v4.1 | 2026-04-08 | Platform adapter bundle: added initial adapters for Claude Code, OpenCode, Windsurf, and Cursor, plus cross-platform portability guidance |

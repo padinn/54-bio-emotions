@@ -31,3 +31,4 @@ Canonical references:
 - [../../references/implementation-spec.md](../../references/implementation-spec.md)
 - [../../references/intrinsic-affect-state.schema.json](../../references/intrinsic-affect-state.schema.json)
 - [../../references/conformance-vectors.json](../../references/conformance-vectors.json)
+- [../js/validate-conformance.mjs](../js/validate-conformance.mjs)

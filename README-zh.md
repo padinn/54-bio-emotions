@@ -81,6 +81,7 @@ Intrinsic Affect for AI 不是：
 - [references/intrinsic-affect-state.schema.json](references/intrinsic-affect-state.schema.json)
 - [references/conformance-vectors.json](references/conformance-vectors.json)
 - [runtime/ts/intrinsic-affect.ts](runtime/ts/intrinsic-affect.ts)
+- [runtime/js/validate-conformance.mjs](runtime/js/validate-conformance.mjs)
 
 这两份文件定义了当前参考标准中的：
 
@@ -91,6 +92,7 @@ Intrinsic Affect for AI 不是：
 - 最小运行时 JSON 结构
 - conformance test vectors
 - 一份可直接复用的 TypeScript 参考实现
+- 一份可直接运行的 JavaScript 一致性校验器
 
 ## 内在状态如何形成
 
@@ -374,8 +376,8 @@ clawhub install intrinsic-affect-ai
 | v2.0 | 2026-03-15 | 引入 LLM 语义分析，摆脱关键词依赖 |
 | v3.0 | 2026-03-23 | 引入 AI 自身情绪概念 |
 | v3.5 | 2026-03-23 | 从“换语气”升级为“换帮助策略” |
-| v5.0 | 2026-04-08 | 体系级升级：重命名为 Intrinsic Affect for AI；补全内在状态模型；加入最小状态结构、参考更新模型、implementation spec、JSON schema、TypeScript 参考运行时，以及 conformance vectors |
-| v5.1 | 2026-04-08 | 平台适配合集：加入 Claude Code、OpenCode、Windsurf、Cursor 的第一版适配包，并补上跨平台路线图 |
+| v4.0 | 2026-04-08 | 体系级升级：重命名为 Intrinsic Affect for AI；补全内在状态模型；加入最小状态结构、参考更新模型、implementation spec、JSON schema、TypeScript 参考运行时、conformance vectors，以及可执行校验器 |
+| v4.1 | 2026-04-08 | 平台适配合集：加入 Claude Code、OpenCode、Windsurf、Cursor 的第一版适配包，并补上跨平台路线图 |
 
 ## 许可证
 

@@ -433,12 +433,14 @@ The minimal runtime payload shape is:
 Reference vectors live in:
 
 - `references/conformance-vectors.json`
+- `runtime/js/validate-conformance.mjs`
 
-Each vector provides:
+Together they provide:
 
 - a fixed input state
 - a reference output from the official TypeScript runtime
 - a default numeric tolerance
+- a direct executable validator for pass/fail checks
 
 These vectors are meant to help other implementations answer a simple question:
 
