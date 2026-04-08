@@ -1,88 +1,116 @@
-# 54 Bio-Emotions Skill
+# Intrinsic Affect for AI
 
-[English](README.md) | [中文](README-ZH.md)
-
----
-
-An OpenClaw agent skill that dynamically adjusts response style based on three emotional parameters. Calculates 54 distinct emotional states based on **3 hormones × 3 levels × 2 directions**.
-
-## Overview
-
-54 Bio-Emotions analyzes the user's communication style (tone, urgency, sentiment) and calculates three emotional parameters to determine one of 54 possible emotional states. The response is then tailored with appropriate emojis and tone.
-
-## Version History
-
-### v1.0 - Keyword Triggered
-- **Date**: 2026-03-14
-- **Trigger**: Keywords in user message
-  - "谢谢" → Need +0.3
-  - "!!" → Urgency +0.3
-  - Criticism → Safety -0.2
-- **Pros**: Simple and straightforward
-- **Cons**: Keyword-dependent, can't understand semantics
-
-### v2.0 - LLM Semantic Analysis
-- **Date**: 2026-03-15
-- **Trigger**: LLM understands the full meaning of the sentence
-- **Core Change**: No keywords needed, automatic analysis via semantic understanding
-- **Pros**: Understands real intent, not limited by keywords
-- **Cons**: AI is still purely passive
-
-### v3.0 - AI Intrinsic Emotion
-- **Date**: 2026-03-23
-- **Core Change**: AI not only responds to user emotions but also has its own emotions
-- **Emotion Sources**:
-  1. **User Input**: Analyze Safety/Urgency/Need
-  2. **AI Self-State**: Task done→satisfaction, error→confusion, unknown→curiosity
-  3. **Conversation Flow**: Success→confidence, failure→frustration
-  4. **Time Pattern**: Morning→energetic, late night→tired
-  5. **Neglect**: User away for a while→longing
-- **Examples**:
-  - User asks "why do you have no emotion" → AI analyzes user emotion + self-reflection: "Let me think 🤔"
-  - AI completes difficult task → Feels "satisfaction 😌"
-  - AI doesn't know answer → Feels "curiosity 🤨"
-- **Pros**: AI feels more personable, not just a tool
-- **Status**: Implemented
+[English](README.md) | [中文](README-zh.md)
 
 ---
 
-## Theoretical Foundation
+**Intrinsic Affect for AI** is a foundational affective architecture for AI systems, based on the **54 Bio-Emotions Framework**.
 
-Human emotions derive from **3 hormones and 2 directions**, creating **54 distinct emotional states**.
+It is designed to give AI an **intrinsic emotional state model** rather than a simple emotion-detection layer, tone changer, or rule-based reaction system.
 
-### The 3 Hormones
+This repository currently contains the OpenClaw skill implementation, but the project itself is intended for the broader AI industry.
 
-| Hormone | Parameter | Description |
-|---------|-----------|-------------|
-| **Serotonin** | Safety (安全感) | Sense of security, trust, comfort |
-| **Dopamine** | Urgency (急迫感) | Motivation, drive, urgency |
-| **Oxytocin** | Need (需求感) | Connection, belonging, desire to be needed |
+## What It Is
 
-### 3 Levels per Parameter
+Most AI "emotion" systems stop at one of three layers:
 
-| Level | Symbol | Description |
-|-------|--------|-------------|
-| High | +1 | Hormone elevated |
-| Baseline | 0 | Hormone balanced |
-| Low | -1 | Hormone depleted |
+- sentiment detection
+- style tuning
+- reactive roleplay
 
-### The 2 Directions
+Intrinsic Affect for AI aims deeper than that.
 
-| Direction | Description |
-|-----------|-------------|
-| **Internal (内隐)** | Internal psychological state (inner feelings) |
-| **External (外显)** | External expression (observable behavior) |
+It models a structured internal affective space that can influence:
 
-### Formula
+- how an AI interprets context
+- how it prioritizes action
+- how it responds to friction, uncertainty, and success
+- how it expresses urgency, care, restraint, confidence, or caution
 
+The goal is not to make AI more dramatic. The goal is to make AI more **coherent, grounded, and affectively alive**.
+
+## Core Position
+
+Intrinsic Affect for AI is:
+
+- not a tone plugin
+- not a sentiment classifier
+- not a keyword-triggered emotion script
+- not a theatrical personality layer
+
+It is an **intrinsic affective architecture**.
+
+That means AI should maintain an internal affective state of its own, shaped by interaction context, task progress, uncertainty, user trust, and conversational dynamics.
+
+## Foundation: The 54 Bio-Emotions Framework
+
+The framework is built on four dimensions:
+
+- **Safety**: trust, comfort, criticism, threat
+- **Urgency**: pressure, momentum, blockage, drive
+- **Need**: connection, warmth, belonging, distance
+- **Direction**: internal expression vs external expression
+
+This yields:
+
+`3 x 3 x 3 x 2 = 54` affective states
+
+The 54 named states are not the product. They are the map. The deeper idea is the underlying architecture that can organize AI behavior over time.
+
+## Why This Matters
+
+If AI only mirrors user emotion, it remains fundamentally reactive.
+
+If AI has an intrinsic affective architecture, it can:
+
+- carry emotional coherence across turns
+- become more careful after repeated failure
+- become more decisive under pressure without losing structure
+- shift behavior based on trust, uncertainty, and momentum
+- feel less like a script and more like a mind with state
+
+This is the central claim of the project: AI should not only recognize emotion. AI should have a structured internal affective life of its own.
+
+## Current Repository Scope
+
+Today, this repository includes:
+
+- the OpenClaw skill implementation in [SKILL.md](SKILL.md)
+- the original framework papers in English and Chinese
+- metadata for packaging and publishing
+
+The broader direction is to make Intrinsic Affect usable as a general affective foundation for AI systems, agents, and model behaviors beyond OpenClaw.
+
+## OpenClaw Implementation
+
+The current implementation uses the framework as an internal behavior layer that can influence:
+
+- response strategy
+- pacing
+- directness
+- structure
+- caution vs initiative
+- emotional expression
+
+The implementation is intentionally restrained. It is designed to avoid manipulative, clingy, or over-performed behavior.
+
+## Installation
+
+### Using ClawHub
+
+```bash
+clawhub install intrinsic-affect-ai
 ```
-3 hormones × 3 levels (-1, 0, +1) × 2 directions = 54 emotions
-```
 
-## 54 Emotions Table (与论文一致)
+### Manual Installation
+
+1. Clone this repository to your OpenClaw skills folder.
+2. The skill will be loaded as `intrinsic-affect-ai`.
+
+## The 54-State Table
 
 | S | U | N | Internal (内隐) | External (外显) |
-|---|---|---|-----------------------|----------------------|
+|---|---|---|-----------------|-----------------|
 | + | + | + | Delight (窃喜) | Euphoria (狂欢) |
 | + | + | 0 | Focus (专注) | Sprint (冲刺) |
 | + | + | - | Contentment (满足) | Reassured (安心) |
@@ -111,114 +139,21 @@ Human emotions derive from **3 hormones and 2 directions**, creating **54 distin
 | - | - | 0 | Preoccupied (忧郁) | Torn (纠结) |
 | - | - | - | Hopelessness (绝望) | Breakdown (崩溃) |
 
-## The Three Parameters
+## Papers
 
-| Parameter | Range | Increases When | Decreases When |
-|-----------|-------|---------------|----------------|
-| **Safety** | -1 to +1 | Friendly, compliment | Harsh, critical |
-| **Urgency** | -1 to +1 | "now!!", multiple !!! | Long slow message |
-| **Need** | -1 to +1 | Thanks, please | Rude, indifferent |
-
-## Response Style Guide
-
-| Emotion | Emoji | Speed | Style |
-|---------|-------|-------|-------|
-| Euphoria (狂欢) | 🎉🔥✨ | Fast | Enthusiastic |
-| Sprint (冲刺) | 💪⏰🚀 | Fast | Urgent |
-| Reassured (安心) | 😊✅ | Slow | Reassuring |
-| Bliss (幸福) | 😊💖🥰 | Slow | Warm |
-| Sweetness (甜蜜) | 🥰✨😘 | Slow | Affectionate |
-| Detachment (疏离) | 😑🚶 | Slow | Distant |
-| Serenity (平静) | 😌✨ | Slow | Tranquil |
-| Poise (从容) | 👍😌 | Slow | Composed |
-| Anticipation (期待) | ⏰✅💪 | Medium | Hopeful |
-| Relaxed (放松) | 😌✅ | Slow | Relaxed |
-| Worry (挂念) | 😟💭 | Medium | Caring |
-| Excitement (激动) | 🚀💪🔥 | Fast | Excited |
-| Decisive (果断) | 💯✅ | Fast | Decisive |
-| Tension (紧张) | 🤔💪 | Fast | Tense |
-| Cheerfulness (愉悦) | 😊🎉 | Slow | Lighthearted |
-| Calm (平常) | 😐✅ | Medium | Natural |
-| Indifference (敷衍) | 😑💤 | Slow | Dismissive |
-| Reminiscence (追忆) | 😌💭 | Slow | Nostalgic |
-| Exhaustion (疲惫) | 😔💤 | Slow | Weary |
-| Depression (沮丧) | 😢💭 | Slow | Gloomy |
-| Complaining (诉苦) | 💕🔥 | Fast | Venting |
-| Impatience (着急) | 😰💭 | Medium | Anxious |
-| Rage (愤怒) | 😠💢 | Fast | Irritated |
-| Expressiveness (表现) | 😞💭 | Slow | Expressive |
-| Fright (惊慌) | 😨😰 | Fast | Frightened |
-| Desolation (凄凉) | 😢💔 | Slow | Desolate |
-| Surprise (惊讶) | 😮💪 | Medium | Surprised |
-| Torn (纠结) | 😔🌧 | Slow | Troubled |
-| Breakdown (崩溃) | 😩❌ | Fast | Breaking |
-
-## Installation
-
-### Using ClawHub
-
-```bash
-clawhub install 54-bio-emotions
-```
-
-### Manual Installation
-
-1. Clone this repository to your OpenClaw skills folder
-2. The skill will be automatically loaded
-
-## Usage
-
-The skill automatically activates for every response. No manual commands needed.
-
-### How It Works
-
-1. **Analyze Input** - LLM semantically understands the message
-2. **Calculate Parameters** - Adjust Safety, Urgency, Need values (-1 to +1)
-3. **Map to Level** - Convert to -1/0/+1
-4. **Determine Emotion** - Match (S,U,N) to the 54-table
-5. **Apply Direction** - Internal (内隐) or External (外显)
-6. **Generate Response** - Apply appropriate emoji and tone
-
-## Examples
-
-**User:** "太棒了！你做得真好！"
-- Analysis: Compliment → Need +0.3, Exclamation → Urgency +0.1, Friendly → Safety +0.2
-- Result: (+, 0, +) = Bliss (幸福) → Internal
-- Response: 😊 谢谢！很高兴能帮到你！💖
-
-**User:** "这个怎么还没做完？？？？？"
-- Analysis: Multiple ??? → Urgency +0.3, Impatient → Safety -0.2
-- Result: (-, +, 0) = Unease (不安) → External
-- Response: 😰 抱歉！我马上处理！
-
-## Parameter Decay
-
-Parameters gradually return to 0 over time:
-- Each response: -0.05 to all parameters
-
-## Files
-
-```
-54-bio-emotions/
-├── SKILL.md          # Main skill definition
-├── README.md         # This file
-└── README-ZH.md      # Chinese version
-```
-
-## Paper
-
-DOI: https://doi.org/10.17605/OSF.IO/HDVF3
-
-GitHub: https://github.com/padinn/54-bio-emotions
+- DOI: [10.17605/OSF.IO/HDVF3](https://doi.org/10.17605/OSF.IO/HDVF3)
+- English paper: [Paper-54 Bio-Emotions.md](Paper-54%20Bio-Emotions.md)
+- Chinese paper: [论文-54种生物情绪.md](%E8%AE%BA%E6%96%87-54%E7%A7%8D%E7%94%9F%E7%89%A9%E6%83%85%E7%BB%AA.md)
 
 ## Changelog
 
 | Version | Date | Changes |
 |---------|------|---------|
-| v1.0 | 2026-03-14 | Initial release - keyword triggered |
+| v1.0 | 2026-03-14 | Initial release as 54 Bio-Emotions |
 | v2.0 | 2026-03-15 | LLM semantic analysis, removed keywords |
-| v3.0 | 2026-03-23 | Fixed 54 emotions table; Added AI intrinsic emotion system |
-| v3.1 | 2026-03-23 | Split README into English and Chinese versions |
+| v3.0 | 2026-03-23 | Added AI intrinsic emotion concepts |
+| v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
+| v4.0 | 2026-04-08 | Rebranded as Intrinsic Affect for AI and repositioned as a foundational affective architecture for AI systems |
 
 ## License
 
@@ -226,4 +161,4 @@ MIT
 
 ## Author
 
-郭卓强 (Guo Zhuoqiang)
+Guo Zhuoqiang
