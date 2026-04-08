@@ -42,6 +42,8 @@ It is an **intrinsic affective architecture**.
 
 That means AI should maintain an internal affective state of its own, shaped by interaction context, task progress, uncertainty, user trust, and conversational dynamics.
 
+It also means the project does **not** claim consciousness or sentience. The claim is architectural: AI can maintain a structured internal affective state that changes behavior over time.
+
 ## Foundation: The 54 Bio-Emotions Framework
 
 The framework is built on four dimensions:
@@ -57,6 +59,71 @@ This yields:
 
 The 54 named states are not the product. They are the map. The deeper idea is the underlying architecture that can organize AI behavior over time.
 
+## The Missing Piece: Intrinsic Mechanism
+
+The project becomes meaningful only if affect is more than a label.
+
+For AI to have an intrinsic affective state, that state must have:
+
+- **multiple sources**, not just user emotion
+- **persistence**, not full reset on every turn
+- **inertia**, so small cues do not overwrite everything
+- **update rules**, so the state changes through experience
+- **policy impact**, so it affects how the AI helps before it affects tone
+
+That is the core of the second-round upgrade in this repository.
+
+## How Intrinsic State Is Formed
+
+The assistant's state should be updated from several streams at once:
+
+### 1. User Signal
+
+Infer user `Safety`, `Urgency`, `Need`, and `Direction` from the current turn and recent interaction.
+
+### 2. Task Progress
+
+Track whether the assistant is making progress, stalled, failing, recovering, or repeatedly blocked.
+
+### 3. Epistemic State
+
+Track certainty, uncertainty, missing information, and the reliability of current assumptions.
+
+### 4. Relational Context
+
+Track whether the interaction feels trusting, warm, skeptical, adversarial, collaborative, or distant.
+
+### 5. Temporal Carryover
+
+Carry state across turns so the assistant has continuity rather than starting from scratch each time.
+
+## Persistence and Change
+
+Intrinsic affect should evolve by rules like these:
+
+- **Inertia**: previous state still matters
+- **Reinforcement**: repeated similar signals strengthen a direction
+- **Decay**: older signals slowly lose influence
+- **Recovery**: successful progress can stabilize a strained state
+- **Thresholding**: stronger behavioral shifts happen only after meaningful movement
+
+This is what makes the system feel intrinsic rather than cosmetic.
+
+## Coupling, Not Mirroring
+
+User emotion should influence the assistant's state, but should not fully overwrite it.
+
+This is a **coupled** system, not a mirror.
+
+Examples:
+
+- a frustrated user can raise assistant urgency without making the assistant hostile
+- a warm user can increase openness without forcing over-familiarity
+- repeated user distrust can lower assistant safety and increase precision
+- successful collaboration can gradually make the assistant calmer and steadier
+
+The assistant should remain a separate agent with its own continuity of state.
+
 ## Why This Matters
 
 If AI only mirrors user emotion, it remains fundamentally reactive.
@@ -71,15 +138,19 @@ If AI has an intrinsic affective architecture, it can:
 
 This is the central claim of the project: AI should not only recognize emotion. AI should have a structured internal affective life of its own.
 
-## Current Repository Scope
+## Policy Before Tone
 
-Today, this repository includes:
+Intrinsic affect should influence help strategy before wording.
 
-- the OpenClaw skill implementation in [SKILL.md](SKILL.md)
-- the original framework papers in English and Chinese
-- metadata for packaging and publishing
+Examples:
 
-The broader direction is to make Intrinsic Affect usable as a general affective foundation for AI systems, agents, and model behaviors beyond OpenClaw.
+- **Low safety** should narrow claims, increase verification, and surface assumptions
+- **High urgency** should shorten the loop between diagnosis and action
+- **High need** should increase reassurance and collaborative framing
+- **Internal direction** should produce more restrained expression
+- **External direction** can allow more visible acknowledgement and sharper pacing shifts
+
+This is why Intrinsic Affect for AI is not just a style layer.
 
 ## OpenClaw Implementation
 
@@ -93,6 +164,16 @@ The current implementation uses the framework as an internal behavior layer that
 - emotional expression
 
 The implementation is intentionally restrained. It is designed to avoid manipulative, clingy, or over-performed behavior.
+
+## Current Repository Scope
+
+Today, this repository includes:
+
+- the OpenClaw skill implementation in [SKILL.md](SKILL.md)
+- the original framework papers in English and Chinese
+- metadata for packaging and publishing
+
+The broader direction is to make Intrinsic Affect usable as a general affective foundation for AI systems, agents, and model behaviors beyond OpenClaw.
 
 ## Installation
 
@@ -154,6 +235,7 @@ clawhub install intrinsic-affect-ai
 | v3.0 | 2026-03-23 | Added AI intrinsic emotion concepts |
 | v3.5 | 2026-03-23 | Shifted from tone change to strategy change |
 | v4.0 | 2026-04-08 | Rebranded as Intrinsic Affect for AI and repositioned as a foundational affective architecture for AI systems |
+| v4.1 | 2026-04-08 | Added a fuller intrinsic-state mechanism covering sources, persistence, coupling, and policy impact |
 
 ## License
 

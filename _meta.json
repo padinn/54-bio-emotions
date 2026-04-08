@@ -1,9 +1,9 @@
 {
   "name": "intrinsic-affect-ai",
-  "version": "4.0.0",
-  "description": "An OpenClaw implementation of Intrinsic Affect for AI, a foundational affective architecture for AI systems based on the 54 Bio-Emotions Framework.",
+  "version": "4.1.0",
+  "description": "An OpenClaw implementation of Intrinsic Affect for AI, a foundational affective architecture for AI systems with intrinsic-state persistence, coupling, and policy impact based on the 54 Bio-Emotions Framework.",
   "author": "Guo Zhuoqiang",
   "homepage": "https://github.com/padinn/intrinsic-affect-ai",
-  "tags": ["ai", "emotion", "affective-architecture"],
+  "tags": ["ai", "emotion", "affective-architecture", "agents"],
   "emoji": "💕"
 }
