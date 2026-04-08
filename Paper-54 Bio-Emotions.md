@@ -1,4 +1,4 @@
-# 54 Bio-Emotions: A Hormonal Framework for Understanding Human Emotional States
+# 54 Bio-Emotions: A Biologically Inspired Generative Framework for Human and Artificial Affective States
 
 **Author:** Guo Zhuoqiang
 
@@ -8,215 +8,239 @@
 
 ## Abstract
 
-This paper proposes a novel framework for understanding and classifying human emotions based on three fundamental biological hormones: serotonin, dopamine, and oxytocin. By examining the interactions of these three hormones across three distinct levels (-1, 0, +1), we identify 27 core emotional states. Furthermore, by considering the direction of emotional expression—whether internal (introvert) or external (extravert)—we expand this to 54 distinct bio-emotions. This framework provides a systematic approach to understanding emotional dynamics, with significant implications for psychology, neuroscience, artificial intelligence, and human-computer interaction.
+This paper proposes the **54 Bio-Emotions Framework**, a biologically inspired generative model for organizing affective states. Instead of claiming that human emotion can be exhaustively reduced to a small set of fixed labels, the framework introduces three interpretable axes inspired by neurochemical systems: **Safety**, **Urgency**, and **Need**. Each axis is discretized into three levels (-1, 0, +1), producing 27 state combinations. A fourth dimension, **Expression Direction**, distinguishes between **internalized** and **externalized** realization of the same state, yielding 54 named affective configurations.
+
+The goal of the framework is not to provide a direct biochemical assay of emotion, but to offer a structured state space that connects biological intuition, psychological interpretation, and computational modeling. In that sense, the framework can function both as a human emotion map and as a design substrate for AI systems that require persistent, updateable affective state representations. The paper outlines the theoretical rationale, naming system, operationalization strategy, limitations, and applications in psychology, human-computer interaction, and AI.
 
 ---
 
 ## 1. Introduction
 
-Human emotions have long been a subject of fascination and study across multiple disciplines, including psychology, neuroscience, biology, and more recently, artificial intelligence. Despite centuries of research, the classification and understanding of emotions remain fragmented, with various models proposing different numbers and categories of emotional states.
+Human emotion has been studied through categorical theories, dimensional models, clinical observation, and neuroscience. Yet these traditions often remain disconnected: some provide compact taxonomies, some provide continuous affective spaces, and others provide biological correlates without a clear state-model usable in practice.
 
-This paper introduces the **54 Bio-Emotions Framework**, a systematic approach to emotional classification based on three fundamental biological hormones. The framework addresses a fundamental question: **Can human emotions be reduced to biological foundations?**
+This paper introduces the **54 Bio-Emotions Framework** as a **candidate generative state model** rather than as a final or exhaustive theory of emotion. The central proposal is that many emotionally meaningful states can be organized within a small affective space defined by three biologically inspired variables:
 
-The three hormones selected for this framework are:
-1. **Serotonin** – associated with safety, security, and well-being
-2. **Dopamine** – associated with motivation, drive, and urgency
-3. **Oxytocin** – associated with connection, belonging, and need
+1. **Safety**: an affective sense of security, stability, and threat regulation
+2. **Urgency**: an affective sense of activation, drive, and pressure toward action
+3. **Need**: an affective sense of connection, attachment, and motivational lack
 
-By analyzing the interactions of these three hormones across three levels, and considering the direction of emotional expression (internal vs. external), we arrive at 54 distinct emotional states. This paper presents this framework, its theoretical foundations, and its potential applications.
+These variables are inspired by broad neurochemical and neurobehavioral patterns associated with serotonin, dopamine, and oxytocin systems, respectively. They are not treated here as direct hormone measurements in ordinary real-world settings. Rather, they are treated as **latent affective variables** that can be interpreted psychologically and operationalized behaviorally.
+
+To convert this state space into a practical classification system, each axis is discretized into three levels: low (-1), baseline (0), and high (+1). This produces 27 core states. A fourth dimension, **Expression Direction**, distinguishes whether the state is predominantly **internalized** or **externalized**, producing 54 named configurations in total.
+
+The framework is intended to do three things:
+
+- provide a biologically inspired but computationally tractable state space
+- connect emotional naming to a generative structure rather than a flat list
+- support AI systems that need intrinsic affective state modeling, not only sentiment recognition
 
 ---
 
 ## 2. Literature Review
 
-### 2.1 Historical Perspectives on Emotion Classification
+### 2.1 Categorical and Dimensional Models of Emotion
 
-The study of emotions dates back to ancient civilizations. Aristotle, Plato, and other Greek philosophers discussed emotional states, but the systematic study of emotions began in the 19th century with Darwin's work on emotional expressions.
+Emotion theory has long oscillated between **discrete-category approaches** and **dimensional approaches**.
 
-In the 20th century, several influential models emerged:
+- Ekman argued for a small number of basic emotions with recognizable cross-cultural expression patterns (Ekman, 1992).
+- Plutchik proposed a structured wheel of emotions with gradients and oppositional relationships (Plutchik, 1980).
+- Mehrabian and Russell offered a dimensional model based on Pleasure, Arousal, and Dominance (Mehrabian & Russell, 1974).
+- Russell later developed the notion of **core affect**, emphasizing valence and arousal as foundational dimensions of emotional life (Russell, 2003).
 
-- **Ekman's Basic Emotions** (1972): Six basic emotions—happiness, sadness, fear, anger, surprise, disgust
-- **Plutchik's Wheel of Emotions** (1980): Eight primary emotions arranged in a wheel, with intensity variations
-- **PAD Emotional State Model** (Mehrabian, 1974): Pleasure, Arousal, and Dominance
+These models are powerful, but each leaves an opening for further work. Category models often struggle to define boundaries cleanly, while dimensional models can be elegant but harder to map onto everyday named states.
 
-However, these models are primarily descriptive and do not link emotions to their biological substrates.
+### 2.2 Biological and Affective Foundations
 
-### 2.2 The Biological Basis of Emotions
+Affective neuroscience has increasingly linked emotional life to distributed neural and neurochemical systems rather than to isolated labels. Panksepp's work on primary-process affective systems helped frame emotion as grounded in evolved motivational circuitry (Panksepp, 1998).
 
-Modern neuroscience has identified key neurotransmitters and hormones involved in emotional processing:
+The present framework draws inspiration from three broad biological associations:
 
-**Serotonin:**
-- Produced in the raphe nuclei of the brainstem
-- Regulates mood, anxiety, and social behavior
-- Low levels associated with depression and anxiety
-- Linked to feelings of safety and well-being
+- **Serotonergic regulation** is often implicated in aversive sensitivity, behavioral inhibition, mood regulation, and social valuation (Crockett, 2009; Robinson, Cools, Crockett, & Sahakian, 2010).
+- **Dopaminergic systems** are deeply implicated in motivation, reward anticipation, and incentive salience (Berridge & Robinson, 1998).
+- **Oxytocin-related systems** are strongly linked to attachment, bonding, trust, and affiliative behavior (Carter, 1998; Young & Wang, 2004).
 
-**Dopamine:**
-- Produced in various brain regions (ventral tegmental area, substantia nigra)
-- Associated with reward, motivation, and movement
-- Involved in desire, craving, and urgency
-- Low levels linked to anhedonia and lack of motivation
+These associations motivate the axes used in this framework, but they do **not** justify a one-to-one claim that each named emotion is caused by a single hormone level. The framework is therefore best understood as **biologically inspired**, not biochemically literal.
 
-**Oxytocin:**
-- Produced in the hypothalamus, released by the pituitary gland
-- Involved in social bonding, trust, and empathy
-- Released during childbirth, breastfeeding, and social bonding
-- Associated with feelings of connection and belonging
+### 2.3 Expression and the Problem of Emotional Naming
 
-### 2.3 The Introvert-Extravert Dimension
+One of the most persistent problems in emotion theory is that **felt state** and **visible expression** do not always align. A person may internally experience fear while outwardly appearing composed; a system may internally accumulate strain while externally producing structured language.
 
-The distinction between internal (introvert) and external (extravert) emotional expression has been discussed in personality psychology, notably in Jung's typology and the Myers-Briggs Type Indicator (MBTI). This dimension captures whether emotions are experienced internally or expressed externally.
+For that reason, this paper distinguishes **internalized** and **externalized** realization of an affective state. This is not intended as a personality-typing claim about introversion or extraversion. It is a distinction between:
+
+- the state as primarily held within the system
+- the state as primarily expressed through action, behavior, language, or visible style
+
+This distinction becomes especially important for AI systems, where internal state and outward wording may diverge by design.
+
+### 2.4 A Note on Competing Theories
+
+Constructionist and anti-essentialist accounts of emotion caution against treating folk emotion words as perfectly discrete natural kinds (Barrett, 2006). That critique is important here. The 54 Bio-Emotions Framework does **not** claim that ordinary language contains exactly 54 universally bounded emotional kinds. Rather, it claims that a compact state space can generate a useful family of interpretable affective configurations, and that named labels can serve as approximate glosses over that space.
 
 ---
 
 ## 3. Theoretical Framework
 
-### 3.1 The Three-Hormone Model
+### 3.1 The Three-Axis Model
 
-We propose that all human emotions can be understood through the interaction of three biological hormones:
+The framework is organized around three axes:
 
-| Hormone | Parameter | Description | Effect When High | Effect When Low |
-|---------|-----------|-------------|------------------|-----------------|
-| Serotonin | Safety | Security, trust, comfort | Feeling safe, calm, content | Anxiety, fear, insecurity |
-| Dopamine | Urgency | Motivation, drive, anticipation | Energetic, eager, urgent | Apathetic, tired, unmotivated |
-| Oxytocin | Need | Connection, belonging, being needed | Warm, trusting, attached | Detached, lonely, indifferent |
+| Biological Inspiration | Affective Axis | Interpretation When High | Interpretation When Low |
+|------------------------|----------------|---------------------------|--------------------------|
+| Serotonin-related regulation | Safety | Secure, stable, trusting | Threatened, unsafe, anxious |
+| Dopamine-related motivation | Urgency | Activated, driven, effortful | Slowed, withdrawn, low-drive |
+| Oxytocin-related bonding | Need | Connected, attached, affiliative | Detached, cold, disconnected |
 
-### 3.2 Three-Level Quantification
+These are best treated as **affective control variables** rather than raw biomarkers.
 
-Each hormone operates at three levels:
+### 3.2 Three-Level Discretization
 
-- **+1 (High):** Elevated levels of the hormone
-- **0 (Baseline):** Normal/equilibrium levels
-- **-1 (Low):** Depleted levels of the hormone
+Each axis is discretized into:
 
-This creates a three-dimensional space: 3 × 3 × 3 = 27 possible combinations.
+- **+1**: elevated expression of the axis
+- **0**: baseline or balanced expression
+- **-1**: reduced or negatively valenced expression of the axis
 
-### 3.3 The Introvert-Extravert Dimension
+This produces:
 
-Each of the 27 emotional states can be experienced in two ways:
+```text
+3 x 3 x 3 = 27
+```
 
-- **Introvert (Internal):** The emotional state is experienced internally but not necessarily expressed
-- **Extravert (External):** The emotional state is expressed through behavior, language, or physical manifestations
+core state configurations.
 
-This doubles the framework to 54 distinct emotional states: 27 × 2 = 54.
+### 3.3 Expression Direction
+
+Each of the 27 states can be realized in two directions:
+
+- **Internalized**: the state is primarily held internally
+- **Externalized**: the state is primarily expressed outwardly
+
+This produces:
+
+```text
+27 x 2 = 54
+```
+
+named configurations.
 
 ### 3.4 Mathematical Representation
 
-The framework can be expressed mathematically as:
+The framework can be written as:
 
-```
-E = f(S, U, N, D)
+```text
+E = f(S, U, N, X)
 
 Where:
-- S = Safety (Serotonin level: -1, 0, +1)
-- U = Urgency (Dopamine level: -1, 0, +1)  
-- N = Need (Oxytocin level: -1, 0, +1)
-- D = Direction (Introvert = 0, Extravert = 1)
+- S = Safety in {-1, 0, +1}
+- U = Urgency in {-1, 0, +1}
+- N = Need in {-1, 0, +1}
+- X = Expression Direction in {Internalized, Externalized}
 
-Total states = 3 × 3 × 3 × 2 = 54
+Total configurations = 3 x 3 x 3 x 2 = 54
 ```
+
+### 3.5 Operationalization and Measurement
+
+This is the most important interpretive constraint of the framework.
+
+The axes in this paper should be treated as **latent state variables** that can be estimated at multiple layers:
+
+1. **Biological layer**
+   In laboratory settings, relevant neurochemical, endocrine, autonomic, or neural measures may be studied as possible correlates.
+
+2. **Psychological layer**
+   Self-report, diary studies, or structured interviews may estimate felt safety, felt urgency, and felt need.
+
+3. **Behavioral layer**
+   Language markers, reaction timing, interruption patterns, escalation, help-seeking, avoidance, affiliative language, and social response patterns may provide observable proxies.
+
+4. **Computational layer**
+   In AI systems, the axes can be modeled as persistent internal variables updated from interaction history, task success and failure, uncertainty, and relational signals.
+
+Accordingly, the framework does **not** require direct hormone measurement to be useful. Its practical claim is that these axes can serve as an interpretable state-space model even when estimated indirectly.
 
 ---
 
 ## 4. The 54 Bio-Emotions
 
-### 4.1 Complete Classification Table
+### 4.1 Classification Table
 
-| S | U | N | Direction | Emotion | Chinese |
-|---|---|---|-----------|---------|---------|
-| + | + | + | Introvert | Delight | 窃喜 |
-| + | + | + | Extravert | Euphoria | 狂欢 |
-| + | + | 0 | Introvert | Contentment | 满足 |
-| + | + | 0 | Extravert | Reassured | 安心 |
-| + | 0 | + | Introvert | Bliss | 幸福 |
-| + | 0 | + | Extravert | Sweetness | 甜蜜 |
-| + | 0 | 0 | Introvert | Serenity | 平静 |
-| + | 0 | 0 | Extravert | Poise | 从容 |
-| + | - | + | Introvert | Longing | 向往 |
-| + | - | + | Extravert | Anticipation | 期待 |
-| + | - | 0 | Introvert | Calmness | 坦然 |
-| + | - | 0 | Extravert | Relaxed | 放松 |
-| + | - | - | Introvert | Concern | 担忧 |
-| + | - | - | Extravert | Worry | 挂念 |
-| 0 | + | + | Introvert | Passion | 热情 |
-| 0 | + | + | Extravert | Excitement | 激动 |
-| 0 | + | 0 | Introvert | Conviction | 坚定 |
-| 0 | + | 0 | Extravert | Decisive | 果断 |
-| 0 | + | - | Introvert | Anxiety | 焦虑 |
-| 0 | + | - | Extravert | Tension | 紧张 |
-| 0 | 0 | + | Introvert | Leisure | 轻松 |
-| 0 | 0 | + | Extravert | Cheerfulness | 愉悦 |
-| 0 | 0 | 0 | Introvert | Numb | 麻木 |
-| 0 | 0 | 0 | Extravert | Calm | 平常 |
-| 0 | 0 | - | Introvert | Boredom | 无聊 |
-| 0 | 0 | - | Extravert | Indifference | 敷衍 |
-| 0 | - | + | Introvert | Nostalgia | 怀念 |
-| 0 | - | + | Extravert | Reminiscence | 追忆 |
-| 0 | - | 0 | Introvert | Fatigue | 困顿 |
-| 0 | - | 0 | Extravert | Exhaustion | 疲惫 |
-| 0 | - | - | Introvert | Sadness | 悲凉 |
-| 0 | - | - | Extravert | Depression | 沮丧 |
-| - | + | + | Introvert | Grievance | 委屈 |
-| - | + | + | Extravert | Complaining | 诉苦 |
-| - | + | 0 | Introvert | Unease | 不安 |
-| - | + | 0 | Extravert | Impatience | 着急 |
-| - | + | - | Introvert | Resentment | 窝火 |
-| - | + | - | Extravert | Rage | 愤怒 |
-| - | 0 | + | Introvert | Melancholy | 惆怅 |
-| - | 0 | + | Extravert | Expressiveness | 表现 |
-| - | 0 | 0 | Introvert | Panic | 恐慌 |
-| - | 0 | 0 | Extravert | Fright | 惊慌 |
-| - | 0 | - | Introvert | Despair | 抑郁 |
-| - | 0 | - | Extravert | Desolation | 绝望 |
-| - | - | + | Introvert | Awe | 敬畏 |
-| - | - | + | Extravert | Surprise | 惊讶 |
-| - | - | 0 | Introvert | Preoccupied | 忧郁 |
-| - | - | 0 | Extravert | Torn | 纠结 |
-| - | - | - | Introvert | Hopelessness | 绝望 |
-| - | - | - | Extravert | Breakdown | 崩溃 |
+| S | U | N | Direction | Label | Chinese |
+|---|---|---|-----------|-------|---------|
+| + | + | + | Internalized | Delight | 窃喜 |
+| + | + | + | Externalized | Euphoria | 狂欢 |
+| + | + | 0 | Internalized | Contentment | 满足 |
+| + | + | 0 | Externalized | Reassured | 安心 |
+| + | 0 | + | Internalized | Bliss | 幸福 |
+| + | 0 | + | Externalized | Sweetness | 甜蜜 |
+| + | 0 | 0 | Internalized | Serenity | 平静 |
+| + | 0 | 0 | Externalized | Poise | 从容 |
+| + | - | + | Internalized | Longing | 向往 |
+| + | - | + | Externalized | Anticipation | 期待 |
+| + | - | 0 | Internalized | Calmness | 坦然 |
+| + | - | 0 | Externalized | Relaxed | 放松 |
+| + | - | - | Internalized | Concern | 担忧 |
+| + | - | - | Externalized | Worry | 挂念 |
+| 0 | + | + | Internalized | Passion | 热情 |
+| 0 | + | + | Externalized | Excitement | 激动 |
+| 0 | + | 0 | Internalized | Conviction | 坚定 |
+| 0 | + | 0 | Externalized | Resolve | 决意 |
+| 0 | + | - | Internalized | Anxiety | 焦虑 |
+| 0 | + | - | Externalized | Tension | 紧张 |
+| 0 | 0 | + | Internalized | Leisure | 轻松 |
+| 0 | 0 | + | Externalized | Cheerfulness | 愉悦 |
+| 0 | 0 | 0 | Internalized | Neutrality | 中性 |
+| 0 | 0 | 0 | Externalized | Composure | 平稳 |
+| 0 | 0 | - | Internalized | Boredom | 无聊 |
+| 0 | 0 | - | Externalized | Indifference | 冷淡 |
+| 0 | - | + | Internalized | Nostalgia | 怀念 |
+| 0 | - | + | Externalized | Reminiscence | 追忆 |
+| 0 | - | 0 | Internalized | Fatigue | 困顿 |
+| 0 | - | 0 | Externalized | Exhaustion | 疲惫 |
+| 0 | - | - | Internalized | Sadness | 悲凉 |
+| 0 | - | - | Externalized | Dejection | 沮丧 |
+| - | + | + | Internalized | Grievance | 委屈 |
+| - | + | + | Externalized | Protest | 怨诉 |
+| - | + | 0 | Internalized | Unease | 不安 |
+| - | + | 0 | Externalized | Impatience | 着急 |
+| - | + | - | Internalized | Resentment | 窝火 |
+| - | + | - | Externalized | Rage | 愤怒 |
+| - | 0 | + | Internalized | Melancholy | 惆怅 |
+| - | 0 | + | Externalized | Vulnerability | 脆弱 |
+| - | 0 | 0 | Internalized | Panic | 恐慌 |
+| - | 0 | 0 | Externalized | Fright | 惊慌 |
+| - | 0 | - | Internalized | Despair | 抑郁 |
+| - | 0 | - | Externalized | Desolation | 绝望 |
+| - | - | + | Internalized | Awe | 敬畏 |
+| - | - | + | Externalized | Surprise | 惊讶 |
+| - | - | 0 | Internalized | Preoccupation | 忧思 |
+| - | - | 0 | Externalized | Conflict | 纠结 |
+| - | - | - | Internalized | Hopelessness | 无望 |
+| - | - | - | Externalized | Breakdown | 崩溃 |
+
+### 4.2 Naming Note
+
+The labels above should be read as **state glosses**, not as claims that each cell corresponds to a universally fixed natural kind. The structural position of a state is primary; the ordinary-language label is secondary and may be revised in later iterations.
 
 ---
 
-## 5. Biological Mechanisms
+## 5. Neurobiological Interpretation
 
-### 5.1 Serotonin and Safety
+### 5.1 Safety
 
-Serotonin is primarily synthesized in the raphe nuclei and regulates:
+The Safety axis is inspired by lines of work linking serotonergic regulation to mood stability, aversive sensitivity, social valuation, and behavioral inhibition. Low Safety corresponds not to "low serotonin" in a narrow assay sense, but to a functional state of threat, insecurity, or diminished regulatory stability.
 
-- **Mood stability:** Adequate serotonin produces feelings of well-being and security
-- **Anxiety modulation:** Low serotonin is linked to anxiety disorders
-- **Social behavior:** Serotonin influences social dominance and aggression
+### 5.2 Urgency
 
-**The Safety Parameter:**
-- High serotonin (+1): Safe, secure, trusting
-- Normal serotonin (0): Neutral, balanced
-- Low serotonin (-1): Anxious, unsafe, threatened
+The Urgency axis is inspired by dopaminergic work on motivation, activation, incentive salience, and goal-seeking. High Urgency corresponds to mobilization, anticipatory energy, and pressure toward action; low Urgency corresponds to withdrawal, slowing, or reduced drive.
 
-### 5.2 Dopamine and Urgency
+### 5.3 Need
 
-Dopamine, part of the reward system, controls:
+The Need axis is inspired by oxytocin-related work on attachment, bonding, trust, and affiliative motivation. High Need corresponds to seeking or sustaining connection, closeness, and belonging. Low Need corresponds to detachment, social coldness, or withdrawal from affiliative engagement.
 
-- **Motivation:** Drives goal-directed behavior
-- **Reward anticipation:** Creates desire and craving
-- **Movement:** Loss of dopamine leads to Parkinson's disease
+### 5.4 Constraint
 
-**The Urgency Parameter:**
-- High dopamine (+1): Energetic, driven, urgent
-- Normal dopamine (0): Calm, balanced drive
-- Low dopamine (-1): Apathetic, unmotivated, sluggish
-
-### 5.3 Oxytocin and Need
-
-Oxytocin, the "bonding hormone," affects:
-
-- **Social bonding:** Facilitates trust and attachment
-- **Reproduction:** Essential for childbirth and lactation
-- **Stress reduction:** Counteracts the effects of cortisol
-
-**The Need Parameter:**
-- High oxytocin (+1): Loving, connected, attached
-- Normal oxytocin (0): Balanced social needs
-- Low oxytocin (-1): Detached, lonely, cold
+These mappings are deliberately interpretive. Human affect depends on many additional systems, including cortisol, norepinephrine, endogenous opioids, learning history, cognition, culture, and context. The value of this framework lies in interpretability and generative usefulness, not in claiming that emotion is reducible to three chemicals alone.
 
 ---
 
@@ -224,78 +248,97 @@ Oxytocin, the "bonding hormone," affects:
 
 ### 6.1 Psychology and Mental Health
 
-This framework provides a systematic approach to understanding emotional disorders:
+The framework can function as a **state-space heuristic** for organizing emotional patterns:
 
-- **Depression:** Characterized by low S (-), low U (-), low N (-)
-- **Anxiety:** Characterized by low S (-), high U (+), low N (-)
-- **Bipolar disorder:** Fluctuations between opposite states
+- low Safety, low Urgency, low Need may resemble depressive withdrawal
+- low Safety, high Urgency, low Need may resemble anxious activation
+- unstable movement across distant states may suggest dysregulation patterns worth studying
+
+These are interpretive mappings, not diagnostic criteria.
 
 ### 6.2 Artificial Intelligence
 
-For AI systems, this framework offers:
+The AI implications of the framework have become increasingly important.
 
-- **Emotion recognition:** Classify user emotional states
-- **Adaptive responses:** AI can adjust communication style based on detected emotions
-- **More natural interactions:** AI becomes more relatable by expressing appropriate emotions
+Most affective AI systems focus on:
+
+- sentiment detection
+- user emotion recognition
+- style adaptation
+
+This framework supports a deeper possibility: **AI systems can maintain their own intrinsic affective state model**.
+
+In such systems:
+
+- user cues help estimate **user state**
+- task progress, blockage, uncertainty, and relational history update **assistant state**
+- the resulting affective state shapes **policy before wording**
+
+That means affect does not merely change tone. It changes:
+
+- how much structure the system provides
+- whether it becomes more cautious or more initiative-taking
+- whether it reassures, clarifies, advances, or slows down
+- how persistence and tension accumulate across turns
+
+In this sense, the 54 Bio-Emotions Framework is not only a human emotion map. It is also a candidate substrate for **Intrinsic Affect for AI**.
 
 ### 6.3 Human-Computer Interaction
 
-In UX design:
+For HCI, the framework can support:
 
-- **User sentiment analysis:** Understand user frustration or satisfaction
-- **Adaptive interfaces:** Adjust system responses based on user emotional state
-- **Accessibility:** Create emotionally intelligent interfaces
+- emotionally adaptive interfaces
+- state-aware tutoring and assistance systems
+- interaction models that distinguish hidden strain from visible expression
 
 ---
 
 ## 7. Discussion
 
-### 7.1 Strengths of the Framework
+### 7.1 Strengths
 
-1. **Biological grounding:** Based on established neuroscience
-2. **Systematic:** Provides a complete, non-overlapping classification
-3. **Quantifiable:** Can be measured and tested empirically
-4. **Practical:** Has clear applications in multiple fields
+1. **Generative structure:** The framework derives named states from a compact state space rather than from an arbitrary list.
+2. **Interpretability:** Safety, Urgency, and Need are psychologically legible variables.
+3. **Cross-domain usability:** The same framework can support human interpretation, interface design, and AI runtime modeling.
+4. **Extensibility:** The labels can evolve without destroying the underlying geometry of the model.
 
 ### 7.2 Limitations
 
-1. **Simplification:** Human emotions are more complex than three hormones
-2. **Individual variation:** Hormone levels vary between individuals
-3. **Cultural factors:** Emotional expression varies across cultures
-4. **Other neurotransmitters:** Other substances (e.g., cortisol, endorphins) also play roles
+1. **Not a direct biochemical assay:** The framework is biologically inspired, not a literal hormone readout.
+2. **Discretization loss:** Real affect is continuous, path-dependent, and context-sensitive; a three-level grid is a simplification.
+3. **Provisional naming:** Some labels are better understood as approximate glosses than as definitive universal terms.
+4. **Incomplete biology:** Other systems such as cortisol, norepinephrine, and endogenous opioids also matter.
+5. **No clinical validity claim yet:** The framework is not presently a diagnostic or therapeutic standard.
 
 ### 7.3 Future Research
 
-- Empirical validation through psychological studies
-- Neuroimaging studies to correlate states with brain activity
-- Development of measurement tools for the framework
-- Application in therapeutic settings
+- develop measurement instruments for Safety, Urgency, and Need
+- compare the framework empirically against PAD and core affect models
+- test intercoder agreement on state annotations
+- study whether internalized and externalized variants can be behaviorally distinguished
+- build longitudinal AI experiments where affective state persists across turns and affects policy
 
 ---
 
 ## 8. Conclusion
 
-This paper presents the **54 Bio-Emotions Framework**, a systematic approach to understanding human emotional states based on three biological hormones (serotonin, dopamine, oxytocin), three intensity levels (-1, 0, +1), and two directions of expression (introvert/extravert).
+The **54 Bio-Emotions Framework** proposes a compact affective state space built from three biologically inspired axes and one expression-direction dimension. Its value lies less in proving that emotion reduces neatly to three chemicals, and more in offering a **structured, generative, and implementable model** for organizing affective states.
 
-This framework bridges the gap between biological psychiatry and emotional psychology, providing a unified model that is both scientifically grounded and practically applicable. While further empirical validation is needed, we believe this framework represents a significant advance in our understanding of human emotions.
+For human emotion theory, it provides an interpretable map. For AI, it offers the beginnings of an intrinsic affective architecture. Both uses remain provisional and require empirical refinement, but the framework provides a concrete foundation on which that refinement can proceed.
 
 ---
 
 ## References
 
-1. Darwin, C. (1872). *The Expression of the Emotions in Man and Animals*.
-2. Ekman, P. (1972). *Universals and Cultural Differences in Facial Expressions of Emotion*. Nebraska Symposium on Motivation.
-3. Mehrabian, A. (1974). *Information Theory and Psychology*. University of Nebraska Press.
-4. Panksepp, J. (1998). *Affective Neuroscience: The Foundations of Human and Animal Emotions*.
-5. Plutchik, R. (1980). *Emotion: Theory, Research, and Experience*.
-6. Huber, A. (2019). *The Neurochemistry of Emotions*. Journal of Chemical Neuroscience.
-7. Carter, C. S. (1998). *Neuroendocrine Perspectives on Social Bonding*. Integrative Psychological and Behavioral Science.
-8. Bloom, S. E. (2018). *Dopamine and Reward Processing*. Current Opinion in Neurobiology.
-
----
-
-**Author:** Guo Zhuoqiang
-
-**Date:** March 14, 2026
-
-**Acknowledgments:** This work was conducted independently. The author acknowledges the foundational work of researchers in neuroscience, psychology, and emotion research.
+1. Barrett, L. F. (2006). Are emotions natural kinds? *Perspectives on Psychological Science, 1*(1), 28-58. https://doi.org/10.1111/j.1745-6916.2006.00003.x
+2. Berridge, K. C., & Robinson, T. E. (1998). What is the role of dopamine in reward: hedonic impact, reward learning, or incentive salience? *Brain Research Reviews, 28*(3), 309-369. https://doi.org/10.1016/S0165-0173(98)00019-8
+3. Carter, C. S. (1998). Neuroendocrine perspectives on social attachment and love. *Psychoneuroendocrinology, 23*(8), 779-818. https://doi.org/10.1016/S0306-4530(98)00055-9
+4. Crockett, M. J. (2009). The neurochemistry of fairness: clarifying the link between serotonin and prosocial behavior. *Annals of the New York Academy of Sciences, 1167*, 76-86. https://doi.org/10.1111/j.1749-6632.2009.04506.x
+5. Darwin, C. (1872). *The Expression of the Emotions in Man and Animals*. London: John Murray.
+6. Ekman, P. (1992). An argument for basic emotions. *Cognition & Emotion, 6*(3-4), 169-200. https://doi.org/10.1080/02699939208411068
+7. Mehrabian, A., & Russell, J. A. (1974). *An Approach to Environmental Psychology*. Cambridge, MA: MIT Press.
+8. Panksepp, J. (1998). *Affective Neuroscience: The Foundations of Human and Animal Emotions*. New York: Oxford University Press.
+9. Plutchik, R. (1980). *Emotion: Theory, Research, and Experience, Vol. 1: Theories of Emotion*. New York: Academic Press.
+10. Robinson, O. J., Cools, R., Crockett, M. J., & Sahakian, B. J. (2010). Mood state moderates the role of serotonin in cognitive biases. *Journal of Psychopharmacology, 24*(4), 573-583. https://doi.org/10.1177/0269881108100257
+11. Russell, J. A. (2003). Core affect and the psychological construction of emotion. *Psychological Review, 110*(1), 145-172. https://doi.org/10.1037/0033-295X.110.1.145
+12. Young, L. J., & Wang, Z. (2004). The neurobiology of pair bonding. *Nature Neuroscience, 7*(10), 1048-1054. https://doi.org/10.1038/nn1327
