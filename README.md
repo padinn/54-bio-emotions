@@ -362,7 +362,8 @@ clawhub install intrinsic-affect-ai
 
 - DOI: [10.17605/OSF.IO/HDVF3](https://doi.org/10.17605/OSF.IO/HDVF3)
 - English paper: [Paper-54 Bio-Emotions.md](Paper-54%20Bio-Emotions.md)
-- Chinese paper: [论文-54种生物情绪.md](%E8%AE%BA%E6%96%87-54%E7%A7%8D%E7%94%9F%E7%89%A9%E6%83%85%E7%BB%AA.md)
+- Chinese paper: [Paper-54 Bio-Emotions-zh.md](Paper-54%20Bio-Emotions-zh.md)
+- Japanese paper: [Paper-54 Bio-Emotions-ja.md](Paper-54%20Bio-Emotions-ja.md)
 
 ## Changelog
 
